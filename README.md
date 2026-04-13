@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ecuador Tierra Viva — Foundation Website
 
-## Getting Started
+Official website of the **Ecuador Tierra Viva Foundation**, a cultural and environmental organization working to improve quality of life in Ecuador through community-driven projects.
 
-First, run the development server:
+## Project Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+| Field | Value |
+|---|---|
+| Organization | Ecuador Tierra Viva Foundation |
+| Contact | info@ecuador-tierraviva.org · +593 988 500 314 |
+| Location | Vicente Ramon Roca E8-18 y 6 de diciembre. 4B, Quito, Ecuador |
+| Socials | [@ETV_foundation](https://x.com/ETV_foundation) · [Instagram](https://www.instagram.com/ecuador_tierraviva/) · [Facebook](https://www.facebook.com/ecuadortierravivaorg/) · [TikTok](http://tiktok.com/@ecuadortierraviva) |
+| Tech Stack | Next.js 16 · React 19 · TypeScript · Tailwind CSS v4 |
+| Output | Static HTML export (`next export`) |
+| Deploy | Static hosting (Vercel or similar) |
+
+## Architecture
+
+Single-page application with section-based navigation. All content is statically exported to the `out/` directory.
+
+```
+src/
+├── app/
+│   ├── layout.tsx       # Root layout, Outfit font, metadata
+│   └── page.tsx         # Main page — assembles all sections
+├── components/
+│   ├── NavBar.tsx        # Sticky navigation bar
+│   ├── Hero.tsx          # Auto-rotating image slider hero
+│   ├── OurImpact.tsx     # Impact statistics/metrics
+│   ├── WhatWeDo.tsx      # Four program pillars
+│   ├── FeaturedProject.tsx  # Highlighted current project
+│   ├── Projects.tsx      # Project cards grid (active + executed)
+│   ├── Partners.tsx      # Partner organization logos
+│   ├── InvestmentOps.tsx # Investment/partnership CTA
+│   ├── AboutUs.tsx       # Team section
+│   ├── Festiartes.tsx    # FESTI-ARTES cultural program detail
+│   ├── Archive.tsx       # Historical/executed projects archive
+│   └── Footer.tsx        # Contact info + social links
+├── globals.css           # CSS custom properties + global styles
+└── favicon.ico
+public/
+└── images/              # All static assets (photos, logos, icons)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Program Areas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Pillar | Description |
+|---|---|
+| Water & Climate Solutions | Sustainable water systems, climate-resilient infrastructure |
+| Environmental Restoration | Watershed recovery, ecosystem protection |
+| Community Development | Local economies, sustainable livelihoods |
+| Education & Social Impact | Literacy, youth programs, community engagement |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key Projects
 
-## Learn More
+| Project | Status | Scale |
+|---|---|---|
+| FESTI-ARTES | Active | 500+ children, 2,000+ participants |
+| Book Bus Literacy Program | Active | +10,000 children across Ecuador & Galápagos |
+| Solid Waste Recycling Plant (La Concordia) | Executed | 45,000 people, EU-funded |
+| Community Eco-Lodge | Executed | Sustainable tourism, Change for Children |
+| Medical Brigades | Executed | Multiple provinces |
+| Water Supply Projects | Executed | Rural communities |
 
-To learn more about Next.js, take a look at the following resources:
+## Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm install
+npm run dev       # localhost:3000
+npm run build     # generates static export to out/
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The `out/` directory is what gets deployed. For an updated HTML snapshot, copy `out/` contents to the `ecuador-tierraviva-html/` sibling folder.
 
-## Deploy on Vercel
+## AI Assistants
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project supports multiple AI coding assistants:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Claude Code** → see [`CLAUDE.md`](./CLAUDE.md)
+- **Qwen / OpenWebUI** → see [`QWEN.md`](./QWEN.md)
+- **Generic agents** → see [`AGENTS.md`](./AGENTS.md)
+
+## Changelog
+
+See [`CHANGELOG.md`](./CHANGELOG.md).
