@@ -1,61 +1,53 @@
-@AGENTS.md
+# Ecuador Tierra Viva — Contexto Principal
 
-# Claude Code — Project Instructions
+> Archivo cargado automáticamente por Claude Code en cada sesión.
+> Actualizar aquí cualquier cambio estructural del proyecto.
 
-## Project Identity
+## Identidad del proyecto
+| Campo | Valor |
+|---|---|
+| Organización | Ecuador Tierra Viva (ETV) — ONG cultural y ambiental |
+| Web | https://ecuador-tierraviva.org |
+| Email | info@ecuador-tierraviva.org |
+| Teléfono | +593 988 500 314 |
+| Repositorio | `c:\Users\User\Documents\Desarrollo Web\ecuador-tierraviva-html\` |
+| Rama principal | `main` |
+| Responsable técnico | Arturo Damián Rodríguez Zambrano |
 
-**Ecuador Tierra Viva Foundation** — cultural and environmental NGO website.
-Next.js 16 · React 19 · TypeScript · Tailwind CSS v4 · Static export.
+## Estado actual del proyecto
+- **Tipo:** Sitio web estático (HTML puro + imágenes)
+- **Origen:** Exportación de Next.js 16.2.2 / React 19 / Tailwind v4
+- **Deploy:** Vercel (via MCP) o servidor estático
+- **Assets:** Carpeta `images/` en la raíz del repo
 
-Source: `ecuador-tierraviva/` → Export output: `ecuador-tierraviva-html/`
-
-## Windows / Token Optimization
-
-Large command outputs MUST be piped through Ollama to avoid context overflow:
-
-```bash
-<command> | ollama run llama3.2 "Summarize. Focus on errors or relevant changes. Be concise."
+## Estructura de archivos
+```
+ecuador-tierraviva-html/
+├── index.html              ← Página principal
+├── _not-found.html         ← 404
+├── 404.html
+├── favicon.ico
+├── images/                 ← Todos los assets gráficos
+├── .claude/                ← Documentación operativa (este sistema)
+│   ├── settings.local.json
+│   ├── settings.json
+│   ├── agents/             ← Fichas de cada agente IA
+│   ├── mcp/                ← Config de servidores MCP
+│   └── docs/               ← Arquitectura, flujo, contactos
+└── CLAUDE.md               ← Este archivo
 ```
 
-Apply this to: `npm run build`, `git diff`, long lint output, test runs.
+## Imports de contexto extendido
+@.claude/docs/architecture.md
+@.claude/docs/workflow.md
+@.claude/docs/contacts.md
+@.claude/agents/README.md
+@.claude/mcp/README.md
 
-## Key Conventions
-
-- **Styling**: CSS custom properties in `globals.css` + Tailwind v4 utilities. Never inline styles for layout — use CSS classes.
-- **Images**: All assets in `public/images/`. Reference as `/images/filename.ext`. No `next/image` optimization (disabled in config).
-- **Components**: One component per file in `src/components/`. Client components get `'use client'` directive only when they use hooks/state.
-- **Static export**: `next.config.ts` has `output: "export"`. No dynamic routes or server-only APIs.
-- **Sections as anchors**: Section IDs match nav links (e.g., `id="home"`, `id="what-we-do"`).
-
-## Build & Deploy
-
-```bash
-npm run dev          # development server
-npm run build        # static export → out/
-```
-
-After build, copy `out/` contents to `../ecuador-tierraviva-html/` for the HTML snapshot.
-
-## Component Map
-
-| Component | Section ID | Purpose |
-|---|---|---|
-| NavBar | — | Sticky nav, smooth scroll links |
-| Hero | #home | Auto-sliding background images (5s) |
-| OurImpact | #impact | Stats/metrics cards |
-| WhatWeDo | #what-we-do | Four program pillar cards |
-| FeaturedProject | #featured | Highlighted active project |
-| Projects | #projects | Grid of active + executed projects |
-| Festiartes | #festiartes | FESTI-ARTES cultural program detail |
-| Partners | #partners | Partner logos |
-| InvestmentOps | #partner-with-us | CTA for donors/partners |
-| AboutUs | #about | Team members |
-| Archive | #archive | Historical project records |
-| Footer | — | Contact + social links |
-
-## Content Reference
-
-- Phone: +593 988 500 314
-- Email: info@ecuador-tierraviva.org
-- Address: Vicente Ramon Roca E8-18 y 6 de diciembre. 4B, Quito
-- Social: X `@ETV_foundation` · IG `@ecuador_tierraviva` · FB `ecuadortierravivaorg` · TikTok `@ecuadortierraviva`
+## Reglas de trabajo en este proyecto
+1. Nunca editar archivos de `images/` sin respaldo previo.
+2. Todo commit debe ir firmado: `Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>`
+3. No commitear sin instrucción explícita de Arturo.
+4. El deploy a Vercel se ejecuta solo tras aprobación del responsable de deploy.
+5. Los cambios al `index.html` requieren revisión de contenido antes de publicar.
+6. Responder siempre en español.
