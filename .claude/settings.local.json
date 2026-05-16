@@ -1,30 +1,38 @@
 {
-  "hooks": {
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "lean-ctx hook rewrite",
-            "type": "command"
-          }
-        ],
-        "matcher": "Bash|bash"
-      },
-      {
-        "hooks": [
-          {
-            "command": "lean-ctx hook redirect",
-            "type": "command"
-          }
-        ],
-        "matcher": "Read|read|ReadFile|read_file|View|view|Grep|grep|Search|search|ListFiles|list_files|ListDirectory|list_directory"
-      }
-    ]
-  },
   "permissions": {
     "allow": [
       "Bash(gh repo:*)",
-      "Bash(git ls-remote:*)"
+      "Bash(git ls-remote:*)",
+      "Bash(python -c ' *)",
+      "Bash(python -c \"import bs4; print\\('BeautifulSoup OK'\\)\")",
+      "Bash(mkdir \"c:\\\\Users\\\\User\\\\Documents\\\\Desarrollo Web\\\\ecuador-tierraviva-html\\\\.claude\\\\hooks\")",
+      "Bash(python \"c:\\\\Users\\\\User\\\\Documents\\\\Desarrollo Web\\\\ecuador-tierraviva-html\\\\.claude\\\\hooks\\\\check-i18n-parity.py\")",
+      "Bash(python -c \"import json; en=json.load\\(open\\(r'c:\\\\Users\\\\User\\\\Documents\\\\Desarrollo Web\\\\ecuador-tierraviva-html\\\\locales\\\\en.json',encoding='utf-8'\\)\\); es=json.load\\(open\\(r'c:\\\\Users\\\\User\\\\Documents\\\\Desarrollo Web\\\\ecuador-tierraviva-html\\\\locales\\\\es.json',encoding='utf-8'\\)\\); print\\(f'EN keys: {len\\(en\\)} | ES keys: {len\\(es\\)} | Parity: {set\\(en\\)==set\\(es\\)}'\\)\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\User\\Documents\\Desarrollo Web\\ecuador-tierraviva-html\\.claude"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "lean-ctx hook rewrite"
+          }
+        ]
+      },
+      {
+        "matcher": "Read|read|ReadFile|read_file|View|view|Grep|grep|Search|search|ListFiles|list_files|ListDirectory|list_directory",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "lean-ctx hook redirect"
+          }
+        ]
+      }
     ]
   }
 }

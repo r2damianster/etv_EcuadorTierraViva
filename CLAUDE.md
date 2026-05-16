@@ -23,25 +23,47 @@
 ## Estructura de archivos
 ```
 ecuador-tierraviva-html/
-├── index.html              ← Página principal
+├── index.html              ← Página principal (EN primario + script i18n)
 ├── _not-found.html         ← 404
 ├── 404.html
 ├── favicon.ico
 ├── images/                 ← Todos los assets gráficos
-├── .claude/                ← Documentación operativa (este sistema)
-│   ├── settings.local.json
-│   ├── settings.json
-│   ├── agents/             ← Fichas de cada agente IA
-│   ├── mcp/                ← Config de servidores MCP
-│   └── docs/               ← Arquitectura, flujo, contactos
-└── CLAUDE.md               ← Este archivo
+├── locales/                ← Sistema i18n EN/ES
+│   ├── en.json             ← Textos en inglés (122 claves)
+│   ├── es.json             ← Traducciones en español (122 claves)
+│   └── i18n.js             ← Motor toggle EN↔ES (text-node walker)
+└── .claude/
+    ├── settings.json       ← Hook PostToolUse check-i18n-parity
+    ├── hooks/
+    │   └── check-i18n-parity.py  ← Verifica paridad de claves JSON
+    ├── agents/
+    │   ├── translate-agent.md    ← Agente de sincronización i18n
+    │   └── ...
+    ├── mcp/
+    └── docs/
 ```
+
+## Sistema i18n EN/ES
+- **Idioma primario:** inglés (EN). El HTML queda en inglés.
+- **Toggle:** botón EN/ES inyectado en navbar por `i18n.js`
+- **Motor:** text-node walker — sin `data-i18n` en HTML, cero modificación al markup
+- **Persistencia:** `localStorage('etv-lang')`
+- **Archivos de traducciones:** `locales/en.json` y `locales/es.json`
+
+### Regla de oro i18n
+**Al agregar o cambiar texto en el sitio:**
+1. Agregar/actualizar clave en `locales/en.json`
+2. Agregar/actualizar la misma clave en `locales/es.json`
+3. Verificar: `python .claude/hooks/check-i18n-parity.py`
+
+El hook `PostToolUse` lanza la verificación automáticamente tras editar cualquier `locales/*.json`.
 
 ## Imports de contexto extendido
 @.claude/docs/architecture.md
 @.claude/docs/workflow.md
 @.claude/docs/contacts.md
 @.claude/agents/README.md
+@.claude/agents/translate-agent.md
 @.claude/mcp/README.md
 
 ## Reglas de trabajo en este proyecto
