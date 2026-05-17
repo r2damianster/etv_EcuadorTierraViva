@@ -1,18 +1,4 @@
 {
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python .claude/hooks/check-i18n-parity.py",
-            "condition": "tool_input.file_path contains 'locales' and tool_input.file_path ends_with '.json'"
-          }
-        ]
-      }
-    ]
-  },
   "permissions": {
     "allow": [
       "Read(**)",
@@ -22,12 +8,26 @@
       "Bash(git diff*)",
       "Bash(git log*)",
       "Bash(git add*)",
-      "Bash(git commit*)"
+      "Bash(git commit*)",
+      "Bash(python -c ' *)"
     ],
     "deny": [
       "Bash(git push*)",
       "Bash(git reset --hard*)",
       "Bash(rm -rf*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/check-i18n-parity.py"
+          }
+        ]
+      }
     ]
   }
 }
