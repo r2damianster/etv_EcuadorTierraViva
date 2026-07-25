@@ -13,7 +13,8 @@
       "PowerShell(graphify *)",
       "PowerShell(code-review-graph build *)",
       "PowerShell(code-review-graph status *)",
-      "PowerShell(code-review-graph serve *)"
+      "PowerShell(code-review-graph serve *)",
+      "PowerShell(uv *)"
     ],
     "additionalDirectories": [
       "c:\\Users\\User\\Documents\\Desarrollo Web\\ecuador-tierraviva-html\\.claude"
