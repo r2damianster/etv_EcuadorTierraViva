@@ -14,7 +14,8 @@
       "PowerShell(code-review-graph build *)",
       "PowerShell(code-review-graph status *)",
       "PowerShell(code-review-graph serve *)",
-      "PowerShell(uv *)"
+      "PowerShell(uv *)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\User\\\\Documents\\\\Doctorado\"; pwd; @\\('.git', '.venv', 'code-review-graph.db'\\) | ForEach-Object { \"$_`: $\\(Test-Path $_\\)\" })"
     ],
     "additionalDirectories": [
       "c:\\Users\\User\\Documents\\Desarrollo Web\\ecuador-tierraviva-html\\.claude"
